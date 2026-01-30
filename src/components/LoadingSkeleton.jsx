@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./LoadingSkeleton.css";
 
 export default function LoadingSkeleton({ count = 8 }) {

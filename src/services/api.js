@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_KEY } from "../utils/constants";
+import { API_KEY } from "../utils/constants";
 
 /**
  * Search movies by title
@@ -15,6 +15,16 @@ export const searchMovies = async (
   year = "",
 ) => {
   // TODO: Implement API call
+  const response = await fetch(
+    `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`
+  );
+  const data = await response.json();
+
+  if (data.Response === "False") {
+    throw new Error(data.Error);
+  }
+
+  return data;
   // Build URL with query parameters
   // Handle response
   // Throw error if Response is "False"
@@ -28,6 +38,16 @@ export const searchMovies = async (
  */
 export const getMovieDetails = async (imdbID) => {
   // TODO: Implement API call
+  const response = await fetch(
+    `http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}&plot=full`
+  );
+  const data = await response.json();
+
+  if (data.Response === "False") {
+    throw new Error(data.Error);
+  }
+
+  return data;
   // Fetch movie by ID with plot=full
   // Handle response
   // Throw error if Response is "False"

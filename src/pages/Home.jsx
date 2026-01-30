@@ -1,6 +1,13 @@
-import React from "react";
 
 export default function Home() {
-  // TODO: Implement home page (instructions or trending)
-  return <>Home</>
+  return (
+    <div style={{ 
+      padding: "60px 20px", 
+      textAlign: "center", 
+      maxWidth: "600px", 
+      margin: "0 auto" 
+    }}>
+    
+    </div>
+  );
 }
