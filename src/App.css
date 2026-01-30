@@ -72,3 +72,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.mvi-detail-details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mvi-detail-details p{
+  text-align: left;
+}

@@ -16,7 +16,7 @@ export const searchMovies = async (
 ) => {
   // TODO: Implement API call
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`
+    `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`
   );
   const data = await response.json();
 
@@ -39,17 +39,18 @@ export const searchMovies = async (
 export const getMovieDetails = async (imdbID) => {
   // TODO: Implement API call
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}&plot=full`
+    `https://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}&plot=full`
   );
   const data = await response.json();
 
   if (data.Response === "False") {
     throw new Error(data.Error);
   }
-
   return data;
+  throw new Error("getMovieDetails not implemented");
+  
   // Fetch movie by ID with plot=full
   // Handle response
   // Throw error if Response is "False"
-  throw new Error("getMovieDetails not implemented");
+ 
 };

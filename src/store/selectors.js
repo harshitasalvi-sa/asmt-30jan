@@ -18,6 +18,7 @@ export const selectFilteredMovies = createSelector(
 // TODO: Create selector for watchlist count
 export const selectWatchlistCount = (state) => {
   // TODO: Return watchlist length
+  
 };
 
 // TODO: Create selector for favorites count
