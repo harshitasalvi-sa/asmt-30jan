@@ -20,8 +20,8 @@ const MovieCard = ({ movie, onAddToWatchlist, onAddToFavorites }) => {
             <strong>{movie.Title}</strong>
             <p>{movie.Year} • {movie.Type}</p>
             <div className="btns">
-                <button onClick={() => {e.stopPropagation(); onAddToFavorites(movie)}}>❤️</button>
-                <button onClick={() => {e.stopPropagation(); onAddToWatchlist(movie)}}>➕</button>
+                <button onClick={(e) => {e.stopPropagation(); onAddToFavorites(movie)}}>❤️</button>
+                <button onClick={(e) => {e.stopPropagation(); onAddToWatchlist(movie)}}>➕</button>
             </div>
         </div>
     </div>
