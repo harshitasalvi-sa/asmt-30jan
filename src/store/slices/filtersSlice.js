@@ -16,12 +16,17 @@ const filtersSlice = createSlice({
     },
     setType: (state, action) => {
       // TODO: Update type filter
+      state.type = action.payload;
     },
     setYear: (state, action) => {
       // TODO: Update year filter
+      state.year = action.payload;
     },
     clearFilters: (state) => {
       // TODO: Reset all filters
+      state.searchTerm =  "";
+      state.type =  "all";
+      state.year =  "all";
     },
   },
 });

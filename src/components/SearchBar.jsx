@@ -5,7 +5,7 @@ import { clearSearch, fetchMovies } from "../store/slices/moviesSlice";
 import { setSearchTerm } from "../store/slices/filtersSlice";
 
 const SearchBar = () => {
-  const {searchTerm,type, year, page} = useSelector(state=> state.filters);
+  const {searchTerm, type, year, page} = useSelector(state=> state.filters);
   //const debounce = useDebounce(searchMovies);
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ const SearchBar = () => {
         year: year
       }));
     }
-  }, [debouncedSearchTerm, dispatch]);
+  }, [debouncedSearchTerm, dispatch, year, type]);
 
   const handleSearch = (e) =>{
     const value = e.target.value;
