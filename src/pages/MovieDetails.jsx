@@ -1,3 +1,9 @@
+import React from 'react'
 
-import React from "react";
-// TODO: Implement movie detail page
+const MovieDetails = () => {
+  return (
+    <div>MovieDetails</div>
+  )
+}
+
+export default MovieDetails

@@ -1,11 +1,14 @@
 
 // TODO: Implement movie card with poster, title, year, buttons
 
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToWatchlist, toggleFavorite } from "../store/slices/userSlice";
 
-const MovieCard = ({ movie, onAddToWatchlist, onAddToFavorites }) => {
+const MovieCard = ({ movie }) => {
   if (!movie) return null;
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   
   return (
@@ -20,8 +23,8 @@ const MovieCard = ({ movie, onAddToWatchlist, onAddToFavorites }) => {
             <strong>{movie.Title}</strong>
             <p>{movie.Year} • {movie.Type}</p>
             <div className="btns">
-                <button onClick={(e) => {e.stopPropagation(); onAddToFavorites(movie)}}>❤️</button>
-                <button onClick={(e) => {e.stopPropagation(); onAddToWatchlist(movie)}}>➕</button>
+                <button onClick={(e) => {e.stopPropagation(); dispatch(toggleFavorite(movie))}}>❤️</button>
+                <button onClick={(e) => {e.stopPropagation(); dispatch(addToWatchlist(movie))}}>➕</button>
             </div>
         </div>
     </div>

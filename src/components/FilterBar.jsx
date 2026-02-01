@@ -2,7 +2,9 @@ import React from 'react'
 
 const FilterBar = () => {
   return (
-    <div>FilterBar</div>
+    <div className='filter-bar'>
+      
+    </div>
   )
 }
 

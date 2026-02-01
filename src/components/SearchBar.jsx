@@ -28,11 +28,13 @@ const SearchBar = () => {
     //debouncedSearch(value);
   }
   return (
-    <div>
+    <div className="search-bar">
       <input 
+      id="search-input"
       type="text"
       value={searchTerm}
       onChange={handleSearch}
+      placeholder="Search movies by typing here..."
       />
 
       <button onClick={()=>dispatch(clearSearch())}>Clear Search</button>

@@ -1,2 +1,9 @@
-import React from "react";
-// TODO: Implement search results page with grid
+import React from 'react'
+
+const WatchList = () => {
+  return (
+    <div>WatchList</div>
+  )
+}
+
+export default WatchList

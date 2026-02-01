@@ -54,10 +54,11 @@ body {
   gap: 20px;
 }
 .movie-card{
-  width: 250px;
+  width: 350px;
   height: auto;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 }
 .movie-grid{
   display: grid;
@@ -79,4 +80,30 @@ body {
 }
 .mvi-detail-details p{
   text-align: left;
+}
+.search-bar{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#search-input{
+  padding: 0.7rem;
+  border-radius: 10px;
+  outline: none;
+  margin: 0px 10px;
+  width: 70%;
+  height: 100%;
+  font-size: 1rem;
+}
+.search-bar button{
+  background-color: var(--accent);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  outline: none;
+}
+.search-bar button:hover{
+  background-color: var(--accent-hover);
 }
