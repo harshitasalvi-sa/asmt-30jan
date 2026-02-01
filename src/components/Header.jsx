@@ -25,8 +25,10 @@ export default function Header() {
          </Link>
       </div>
     </nav>
-    <FilterBar/>
-    <SearchBar/>  
+    <div className="search-bar">
+    <SearchBar/>
+     <FilterBar/>
+    </div> 
   </div>
   </>
 }

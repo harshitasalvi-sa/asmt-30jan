@@ -16,7 +16,8 @@ const FilterBar = () => {
         <option value="episode">Episode</option>
         <option value="movie">Movie</option>
       </select>
-      <select value={year} onChange={(e) => dispatch(setYear(e.target.value))}>
+      <label htmlFor="year">Year :</label>
+      <select name="year" id="year" value={year} onChange={(e) => dispatch(setYear(e.target.value))}>
         {years.map((y) => (
           <option key={y} value={y}>
             {y}

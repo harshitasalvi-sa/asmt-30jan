@@ -132,3 +132,26 @@ body {
 .movie-details-page .text{
   text-align: justify;
 }
+.filter-bar{
+  display: flex;
+  flex-direction: row;
+  margin: 1rem auto;
+  width: 500px;
+  height: 40px;
+  gap: 1rem;
+}
+.filter-bar select{
+  height: 100%;
+  border-radius: 10px;
+  padding: 0.5rem;
+
+}
+.search-bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#mvi-title{
+  text-align: left;
+  padding: 1rem 0px;
+}
