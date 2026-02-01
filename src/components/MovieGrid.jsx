@@ -1,27 +1,25 @@
+import React from 'react'
+import { useSelector } from 'react-redux'
+import MovieCard from './MovieCard';
 
-// TODO: Implement responsive grid layout
-import MovieCard from "./MovieCard";
-
-const MovieGrid = ({ movies = [], onAddToWatchlist, onAddToFavorites }) => {
-  if (!movies || movies.length === 0) {
-    return <p>No movies found. Try searching for a movie!</p>;
-  }
-
+const MovieGrid = () => {
+  const {searchResults, loading, error} = useSelector(state => state.movies);
+  console.log(searchResults);
   return (
-    <div className="movie-grid" style={{ 
-      display: "grid", 
-      gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", 
-      gap: "20px", 
-      padding: "20px" 
-    }}>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.imdbID}
-          movie={movie}
-          onAddToWatchlist={onAddToWatchlist}
-          onAddToFavorites={onAddToFavorites}
-        />
-      ))}
+    <div className='movie-grid'>
+      {loading && <p>Loading...</p>}
+      {error && <p style={{color:"red"}}>Error loading results</p>}
+      {
+        searchResults && searchResults.length > 0
+         ?
+         searchResults.map((item, index) => {
+          
+            return <MovieCard key={item.imdbID || index} movie={item}/>
+          
+         })
+         :
+         <p>No search results found</p>
+      }
     </div>
   )
 }

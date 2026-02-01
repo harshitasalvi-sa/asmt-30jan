@@ -1,13 +1,9 @@
-
+import React from "react";
+import Header from "../components/Header.jsx"
+import MovieGrid from "../components/MovieGrid";
 export default function Home() {
-  return (
-    <div style={{ 
-      padding: "60px 20px", 
-      textAlign: "center", 
-      maxWidth: "600px", 
-      margin: "0 auto" 
-    }}>
-    
-    </div>
-  );
+  // TODO: Implement home page (instructions or trending)
+  return <>
+    <MovieGrid/>
+  </>
 }

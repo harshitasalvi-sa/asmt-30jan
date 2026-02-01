@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadFromStorage, saveToStorage } from "../../services/localstorage";
+import { loadFromStorage, saveToStorage } from "../../services/localStorage";
 
 const userSlice = createSlice({
   name: "user",
@@ -9,44 +9,20 @@ const userSlice = createSlice({
   },
   reducers: {
     addToWatchlist: (state, action) => {
-      const movie = action.payload;
-      const exists = state.watchlist.find(m => m.imdbID === movie.imdbID);
-      if (!exists) {
-        state.watchlist.push(movie);
-        saveToStorage("watchlist", state.watchlist);
-      }
+      // TODO: Add movie ID to watchlist
+      // Save to localStorage
     },
     removeFromWatchlist: (state, action) => {
-      const imdbID = action.payload;
-      state.watchlist = state.watchlist.filter(movie => movie.imdbID !== imdbID);
-      saveToStorage("watchlist", state.watchlist);
-    },
-    addToFavorites: (state, action) => {
-      const movie = action.payload;
-      const exists = state.favorites.find(m => m.imdbID === movie.imdbID);
-      if (!exists) {
-        state.favorites.push(movie);
-        saveToStorage("favorites", state.favorites);
-      }
-    },
-    removeFromFavorites: (state, action) => {
-      const imdbID = action.payload;
-      state.favorites = state.favorites.filter(movie => movie.imdbID !== imdbID);
-      saveToStorage("favorites", state.favorites);
+      // TODO: Remove movie ID from watchlist
+      // Save to localStorage
     },
     toggleFavorite: (state, action) => {
-      const movie = action.payload;
-      const exists = state.favorites.find(m => m.imdbID === movie.imdbID);
-      if (exists) {
-        state.favorites = state.favorites.filter(m => m.imdbID !== movie.imdbID);
-      } else {
-        state.favorites.push(movie);
-      }
-      saveToStorage("favorites", state.favorites);
+      // TODO: Toggle favorite status
+      // Save to localStorage
     },
   },
 });
 
-export const { addToWatchlist, removeFromWatchlist, addToFavorites, removeFromFavorites, toggleFavorite } =
+export const { addToWatchlist, removeFromWatchlist, toggleFavorite } =
   userSlice.actions;
 export default userSlice.reducer;

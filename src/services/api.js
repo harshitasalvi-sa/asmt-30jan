@@ -1,4 +1,4 @@
-import { API_KEY } from "../utils/constants";
+import { API_BASE_URL, API_KEY } from "../utils/constants";
 
 /**
  * Search movies by title
@@ -15,9 +15,17 @@ export const searchMovies = async (
   year = "",
 ) => {
   // TODO: Implement API call
-  const response = await fetch(
-    `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`
-  );
+  // Build URL with query parameters
+
+  const params = new URLSearchParams({
+    apikey: API_KEY,
+    s: searchTerm,
+    page: page.toString(),
+    ...(type && type !== "all" && { type }),
+    ...(year && year !== "all" && { y: year }),
+  });
+
+  const response = await fetch(`${API_BASE_URL}?${params}`);
   const data = await response.json();
 
   if (data.Response === "False") {
@@ -25,7 +33,12 @@ export const searchMovies = async (
   }
 
   return data;
-  // Build URL with query parameters
+
+  // const response = await axios.get(`${API_BASE_URL}/?apikey=${API_KEY}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`);
+
+  // const data = await response.json();
+  // console.log(data);
+  // return data;
   // Handle response
   // Throw error if Response is "False"
   throw new Error("searchMovies not implemented");
@@ -38,19 +51,25 @@ export const searchMovies = async (
  */
 export const getMovieDetails = async (imdbID) => {
   // TODO: Implement API call
+  // Fetch movie by ID with plot=full
+  
   const response = await fetch(
-    `https://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}&plot=full`
+    `${API_BASE_URL}?apikey=${API_KEY}&i=${imdbID}&plot=full`,
   );
   const data = await response.json();
 
   if (data.Response === "False") {
     throw new Error(data.Error);
   }
+
   return data;
-  throw new Error("getMovieDetails not implemented");
-  
-  // Fetch movie by ID with plot=full
+
+  // const response = await axios.get(`${API_BASE_URL}/?apikey=${API_KEY}&i=${imdbID}&plot=full`);
+
+  // const data = await response.json();
+  // console.log(data);
+  // return data;
   // Handle response
   // Throw error if Response is "False"
- 
+  throw new Error("getMovieDetails not implemented");
 };

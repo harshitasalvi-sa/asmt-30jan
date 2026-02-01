@@ -1,26 +1,43 @@
-import  { useState,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {useEffect} from "react";
 import { useDebounce } from "../hooks/useDebounce";
+import { clearSearch, fetchMovies } from "../store/slices/moviesSlice";
+import { setSearchTerm } from "../store/slices/filtersSlice";
 
-const SearchBar = ({ onSearch = () => {} }) => {
-  const [query, setQuery] = useState("");
-  const debouncedQuery = useDebounce(query, 500);
+const SearchBar = () => {
+  const {searchTerm,type, year, page} = useSelector(state=> state.filters);
+  //const debounce = useDebounce(searchMovies);
+  const dispatch = useDispatch();
 
-  // Trigger search when debounced query changes
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+
   useEffect(() => {
-    if (debouncedQuery && debouncedQuery.trim().length > 0) {
-      onSearch(debouncedQuery);
+    if (debouncedSearchTerm) {
+      dispatch(fetchMovies({ 
+        searchTerm: debouncedSearchTerm,
+        page: 1,
+        type: type,
+        year: year
+      }));
     }
-  }, [debouncedQuery]); // Removed onSearch from dependencies
+  }, [debouncedSearchTerm, dispatch]);
 
+  const handleSearch = (e) =>{
+    const value = e.target.value;
+    dispatch(setSearchTerm(value));
+    //debouncedSearch(value);
+  }
   return (
-    <input
+    <div>
+      <input 
       type="text"
-      placeholder="Search movies..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
-    />
-  );
-};
+      value={searchTerm}
+      onChange={handleSearch}
+      />
 
-export default SearchBar;
+      <button onClick={()=>dispatch(clearSearch())}>Clear Search</button>
+    </div>
+  )
+}
+
+export default SearchBar
