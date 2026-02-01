@@ -13,6 +13,7 @@ import './App.css';
 import MovieDetails from './pages/MovieDetails';
 import WatchList from './pages/WatchList';
 import Favouristes from './pages/Favouristes';
+import MovieGrid from './components/MovieGrid';
 
 function App() {
   return (
