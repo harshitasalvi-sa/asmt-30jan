@@ -1,10 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromWatchlist, toggleFavorite } from '../store/slices/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const WatchList = () => {
     const { watchlist } = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
   return (
     <>
@@ -12,7 +14,10 @@ const WatchList = () => {
     <div className='movie-grid'>
         {watchlist && watchlist.length > 0 
          ? watchlist.map((movie, index)=>{
-            return <div onClick={()=>navigate(`/movie/${movie.imdbID}`)} className="movie-card" style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", width: "200px" }}>
+            return <div 
+                    key={movie.imdbID || index}
+                    onClick={()=>navigate(`/movie/${movie.imdbID}`)} 
+                    className="movie-card" style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", width: "200px" }}>
                     <img 
                       src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/200x300"} 
                       alt={movie.Title || "Movie poster"} 

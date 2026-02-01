@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
 import "./Header.css"
-import {useState} from "react"
-import { loadFromStorage } from '../services/localStorage';
 import { useSelector } from 'react-redux';
 export default function Header() {
   // TODO: Implement header with nav links and search
