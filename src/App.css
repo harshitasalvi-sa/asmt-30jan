@@ -23,6 +23,7 @@ body {
   line-height: 1.6;
   width: 100vw;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .app {
@@ -154,4 +155,12 @@ body {
 #mvi-title{
   text-align: left;
   padding: 1rem 0px;
+}
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  position: relative;
+  left: 40%;
 }

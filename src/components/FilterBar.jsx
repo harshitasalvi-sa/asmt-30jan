@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { setType, setYear } from '../store/slices/filtersSlice';
 

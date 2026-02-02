@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
@@ -17,6 +17,9 @@ export default function Header() {
     <nav>
       <Link to="/"><h4>Movie List App</h4></Link>
       <div className="nav-list">
+        <Link to="/">
+          <button className='lists'>🔍</button>
+        </Link>
         <Link to="/favorites">
           <button className='lists'>❤️ {totalFavoriteItems}</button>
         </Link>

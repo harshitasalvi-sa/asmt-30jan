@@ -1,7 +1,8 @@
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
+
 
 const Favouristes = () => {
     const { favorites } = useSelector(state => state.user);

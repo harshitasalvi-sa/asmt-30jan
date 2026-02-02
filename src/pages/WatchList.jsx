@@ -1,6 +1,6 @@
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromWatchlist, toggleFavorite } from '../store/slices/userSlice';
+import { removeFromWatchlist } from '../store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const WatchList = () => {
@@ -28,7 +28,12 @@ const WatchList = () => {
                         <strong>{movie.Title}</strong>
                         <p>{movie.Year} • {movie.Type}</p>
                         
-                            <button id="remove-fav" onClick={(e) => {e.stopPropagation(); dispatch(removeFromWatchlist(movie))}}>Remove</button>
+                            <button id="remove-fav" 
+                              onClick={(e) => 
+                                {e.stopPropagation(); 
+                                dispatch(removeFromWatchlist(movie))}}>
+                                Remove
+                            </button>
                         
                     </div>
                 </div>

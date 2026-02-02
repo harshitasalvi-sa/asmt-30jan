@@ -40,7 +40,7 @@ const moviesSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       // TODO: Update current page
-
+      state.currentPage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -59,9 +59,19 @@ const moviesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(fetchMovieDetails.pending, (state)=>{
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(fetchMovieDetails.fulfilled, (state, action) => {
+        state.loading = false;
         state.movieDetails[action.payload.imdbID] = action.payload;
-      });
+      })
+      .addCase(fetchMovieDetails.rejected, (state, actio)=>{
+        state.loading = false;
+        state.error = actio.error.message;
+      })
+      
     // TODO: Handle fetchMovieDetails pending/fulfilled/rejected
   },
 });

@@ -1,7 +1,8 @@
-import {useState, useEffect} from "react"
+import { useEffect} from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchMovieDetails } from '../store/slices/moviesSlice';
+import LoadingSkeleton from "../components/LoadingSkeleton"
 
 const MovieDetails = () => {
 
@@ -20,7 +21,8 @@ const MovieDetails = () => {
 
   return (
     <>
-    {loading && <p>Loading...</p>}
+    {/* {loading && <p>Loading...</p>} */}
+    {loading && <LoadingSkeleton count={1}/>}
     {error && <p>Error loading result</p>}
     {movie && 
     <div className='movie-details-page'>

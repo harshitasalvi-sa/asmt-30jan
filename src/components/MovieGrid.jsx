@@ -1,7 +1,9 @@
-import React from 'react'
+
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import Pagination from './Pagination';
+import LoadingSkeleton from "./LoadingSkeleton"
 
 const MovieGrid = () => {
   const {searchResults, loading, error} = useSelector(state => state.movies);
@@ -38,8 +40,21 @@ const MovieGrid = () => {
     <div className='movies'>
       <h2>{title}</h2>
       
-      {loading && <p>Loading...</p>}
-      {error && <p style={{color:"red"}}>Error: {error}</p>}
+      {/* {loading && <p>Loading...</p>} */}
+      {loading ?  
+      <LoadingSkeleton count={8}/> 
+      : 
+      movies && movies.length > 0 ? (
+        <div className="movie-grid">
+          {movies.map((movie, index) => {
+            return <MovieCard key={movie.imdbID || index} movie={movie}/>}
+          )}
+        </div>
+      ) : (
+        !loading && <p className="empty-message">{emptyMessage}</p>
+      )
+      }
+      {/* {error && <p style={{color:"red"}}>Error: {error}</p>}
       
       {movies && movies.length > 0 ? (
         <div className="movie-grid">
@@ -49,7 +64,9 @@ const MovieGrid = () => {
         </div>
       ) : (
         !loading && <p className="empty-message">{emptyMessage}</p>
-      )}
+      )} */}
+
+      <Pagination/>
     </div>
 
     // <div className='movie-grid'>

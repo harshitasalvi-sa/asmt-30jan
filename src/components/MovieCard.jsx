@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
   return (
     <div onClick={()=>navigate(`/movie/${movie.imdbID}`)} className="movie-card" style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", width: "200px" }}>
         <img 
-          src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/200x300"} 
+          src={movie.Poster !== "N/A" ? movie.Poster : "https://placehold.net/default.png"} 
           alt={movie.Title || "Movie poster"} 
           id="poster"
           style={{ width: "100%", height: "250px", objectFit: "cover" }}
