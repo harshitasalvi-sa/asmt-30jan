@@ -27,10 +27,21 @@ nav h4{
     
 }
 .bar .lists{
-    border-radius: 25px;
-    background-color: var(--bg-card);
-    border: 2px solid var(--accent);
+    
+    border-radius: 15px;
+    /* background-color: var(--bg-card); */
+    border: 2px solid var(--border);
+    background-color:var(--text-secondary);
     
     color: aliceblue;
+}
+#search-btn{
+    text-align: center;
+    padding: 0.5rem;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--text-secondary);
+    background-color: var(--border);
 }
 

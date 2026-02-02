@@ -18,7 +18,7 @@ export default function Header() {
       <Link to="/"><h4>Movie List App</h4></Link>
       <div className="nav-list">
         <Link to="/">
-          <button className='lists'>🔍</button>
+          <button className='lists' id="search-btn">🔍</button>
         </Link>
         <Link to="/favorites">
           <button className='lists'>❤️ {totalFavoriteItems}</button>

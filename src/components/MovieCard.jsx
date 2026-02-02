@@ -12,12 +12,11 @@ const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   
   return (
-    <div onClick={()=>navigate(`/movie/${movie.imdbID}`)} className="movie-card" style={{ border: `1px solid var(--text-secondary)`, padding: "10px", margin: "10px", width: "200px" }}>
+    <div onClick={()=>navigate(`/movie/${movie.imdbID}`)} className="movie-card" >
         <img 
           src={movie.Poster !== "N/A" ? movie.Poster : "https://placehold.net/default.png"} 
           alt={movie.Title || "Movie poster"} 
           id="poster"
-          style={{ width: "100%", height: "250px", objectFit: "cover" }}
         />
         <div className="mvi-details">
             <strong>{movie.Title}</strong>
